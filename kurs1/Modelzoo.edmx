@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ZOOPARKModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="id_Animal" />
+          </Key>
+          <Property Name="id_Animal" Type="int" Nullable="false" />
+          <Property Name="Name_Animal" Type="nvarchar" MaxLength="20" />
+          <Property Name="Species" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="10" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="id_Cage" Type="int" />
+        </EntityType>
+        <EntityType Name="CAGE">
+          <Key>
+            <PropertyRef Name="id_Cage" />
+          </Key>
+          <Property Name="id_Cage" Type="int" Nullable="false" />
+          <Property Name="Name_cage" Type="nvarchar" MaxLength="50" />
+          <Property Name="Size_cage" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="id_Operations" />
+          </Key>
+          <Property Name="id_Animal" Type="int" />
+          <Property Name="TypeOfOperation" Type="nvarchar" MaxLength="150" />
+          <Property Name="id_Staff" Type="int" />
+          <Property Name="id_Operations" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timeOperations" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id_Staff" />
+          </Key>
+          <Property Name="id_Staff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="20" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="Position" Type="nvarchar" MaxLength="20" />
+          <Property Name="Login_staff" Type="nvarchar" MaxLength="20" />
+          <Property Name="Password_staff" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK__id_Animal___3B75D760">
+          <End Role="CAGE" Type="Self.CAGE" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAGE">
+              <PropertyRef Name="id_Cage" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="id_Cage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__id_An__45F365D3">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="id_Animal" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="id_Animal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__id_St__4AB81AF0">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id_Staff" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="id_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ZOOPARKModelContainer">
+          <EntitySet Name="Animal" EntityType="Self.Animal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CAGE" EntityType="Self.CAGE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__id_Animal___3B75D760" Association="Self.FK__id_Animal___3B75D760">
+            <End Role="CAGE" EntitySet="CAGE" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__id_An__45F365D3" Association="Self.FK__Operation__id_An__45F365D3">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__id_St__4AB81AF0" Association="Self.FK__Operation__id_St__4AB81AF0">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ZOOPARKModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Animal">
+          <Key>
+            <PropertyRef Name="id_Animal" />
+          </Key>
+          <Property Name="id_Animal" Type="Int32" Nullable="false" />
+          <Property Name="Name_Animal" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Species" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="id_Cage" Type="Int32" />
+          <NavigationProperty Name="CAGE" Relationship="Self.FK__id_Animal___3B75D760" FromRole="Animal" ToRole="CAGE" />
+          <NavigationProperty Name="Operations" Relationship="Self.FK__Operation__id_An__45F365D3" FromRole="Animal" ToRole="Operations" />
+        </EntityType>
+        <EntityType Name="CAGE">
+          <Key>
+            <PropertyRef Name="id_Cage" />
+          </Key>
+          <Property Name="id_Cage" Type="Int32" Nullable="false" />
+          <Property Name="Name_cage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Size_cage" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK__id_Animal___3B75D760" FromRole="CAGE" ToRole="Animal" />
+        </EntityType>
+        <EntityType Name="Operations">
+          <Key>
+            <PropertyRef Name="id_Operations" />
+          </Key>
+          <Property Name="id_Animal" Type="Int32" />
+          <Property Name="TypeOfOperation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="id_Staff" Type="Int32" />
+          <Property Name="id_Operations" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timeOperations" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Animal" Relationship="Self.FK__Operation__id_An__45F365D3" FromRole="Operations" ToRole="Animal" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Operation__id_St__4AB81AF0" FromRole="Operations" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="id_Staff" />
+          </Key>
+          <Property Name="id_Staff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Login_staff" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Password_staff" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Operations" Relationship="Self.FK__Operation__id_St__4AB81AF0" FromRole="Staff" ToRole="Operations" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__id_Animal___3B75D760">
+          <End Role="CAGE" Type="Self.CAGE" Multiplicity="0..1" />
+          <End Role="Animal" Type="Self.Animal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CAGE">
+              <PropertyRef Name="id_Cage" />
+            </Principal>
+            <Dependent Role="Animal">
+              <PropertyRef Name="id_Cage" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__id_An__45F365D3">
+          <End Role="Animal" Type="Self.Animal" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Animal">
+              <PropertyRef Name="id_Animal" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="id_Animal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Operation__id_St__4AB81AF0">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Operations" Type="Self.Operations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="id_Staff" />
+            </Principal>
+            <Dependent Role="Operations">
+              <PropertyRef Name="id_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZOOPARK" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Animal" EntityType="Self.Animal" />
+          <EntitySet Name="CAGE" EntityType="Self.CAGE" />
+          <EntitySet Name="Operations" EntityType="Self.Operations" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK__id_Animal___3B75D760" Association="Self.FK__id_Animal___3B75D760">
+            <End Role="CAGE" EntitySet="CAGE" />
+            <End Role="Animal" EntitySet="Animal" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__id_An__45F365D3" Association="Self.FK__Operation__id_An__45F365D3">
+            <End Role="Animal" EntitySet="Animal" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Operation__id_St__4AB81AF0" Association="Self.FK__Operation__id_St__4AB81AF0">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Operations" EntitySet="Operations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ZOOPARKModelContainer" CdmEntityContainer="ZOOPARK">
+          <EntitySetMapping Name="Animal">
+            <EntityTypeMapping TypeName="ZOOPARKModel.Animal">
+              <MappingFragment StoreEntitySet="Animal">
+                <ScalarProperty Name="id_Animal" ColumnName="id_Animal" />
+                <ScalarProperty Name="Name_Animal" ColumnName="Name_Animal" />
+                <ScalarProperty Name="Species" ColumnName="Species" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="id_Cage" ColumnName="id_Cage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CAGE">
+            <EntityTypeMapping TypeName="ZOOPARKModel.CAGE">
+              <MappingFragment StoreEntitySet="CAGE">
+                <ScalarProperty Name="id_Cage" ColumnName="id_Cage" />
+                <ScalarProperty Name="Name_cage" ColumnName="Name_cage" />
+                <ScalarProperty Name="Size_cage" ColumnName="Size_cage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operations">
+            <EntityTypeMapping TypeName="ZOOPARKModel.Operations">
+              <MappingFragment StoreEntitySet="Operations">
+                <ScalarProperty Name="id_Animal" ColumnName="id_Animal" />
+                <ScalarProperty Name="TypeOfOperation" ColumnName="TypeOfOperation" />
+                <ScalarProperty Name="id_Staff" ColumnName="id_Staff" />
+                <ScalarProperty Name="id_Operations" ColumnName="id_Operations" />
+                <ScalarProperty Name="timeOperations" ColumnName="timeOperations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="ZOOPARKModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="id_Staff" ColumnName="id_Staff" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Login_staff" ColumnName="Login_staff" />
+                <ScalarProperty Name="Password_staff" ColumnName="Password_staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ZOOPARKModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

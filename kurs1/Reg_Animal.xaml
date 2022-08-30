@@ -1,0 +1,25 @@
+﻿<Window x:Class="kurs1.Reg_Animal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurs1"
+        mc:Ignorable="d"
+        Title="Reg_Animal" Height="475" Width="650"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Margin="40,70,0,349" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" RenderTransformOrigin="0.487,0.874" Width="94" ><Run Language="ru-ru" Text="Номер животного"/></TextBlock>
+        <TextBox HorizontalAlignment="Left" Margin="40,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_id_Animal"/>
+        <TextBox HorizontalAlignment="Left" Margin="40,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_cage"/>
+        <TextBox HorizontalAlignment="Left" Margin="40,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_Name"/>
+        <TextBox HorizontalAlignment="Left" Margin="40,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_Sex"/>
+        <TextBox HorizontalAlignment="Left" Margin="260,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_Species"/>
+        <TextBox HorizontalAlignment="Left" Margin="260,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Name="Tb_DateOfBirth"/>
+        <Button Content="Создать" HorizontalAlignment="Left" Margin="40,290,0,0" VerticalAlignment="Top" Width="90" Click="Reg_Click" Height="30"/>
+        <TextBlock Margin="40,120,0,301" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" ><Run Language="ru-ru" Text="Клетка"/></TextBlock>
+        <TextBlock Margin="40,170,0,248" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Width="82" ><Run Language="ru-ru" Text="Имя животного"/></TextBlock>
+        <TextBlock Margin="40,220,0,200" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" ><Run Language="ru-ru" Text="Пол"/></TextBlock>
+        <TextBlock Margin="260,70,0,350" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" ><Run Language="ru-ru" Text="Вид"/></TextBlock>
+        <TextBlock Margin="260,120,0,300" HorizontalAlignment="Left" FontSize="10" FontWeight="Bold" Width="83" ><Run Language="ru-ru" Text="Дата рождения"/></TextBlock>
+    </Grid>
+</Window>

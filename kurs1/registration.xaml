@@ -1,0 +1,25 @@
+﻿<Window x:Class="kurs1.registration"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:kurs1"
+        mc:Ignorable="d"
+        Title="registration" Height="450" Width="650"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <TextBlock Margin="0,0,560,346" FontSize="13" FontWeight="Bold" RenderTransformOrigin="0.487,0.874" HorizontalAlignment="Right" Width="50" Height="18" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Имя"/></TextBlock>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,460,319" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="150" Height="25" Name="Tb_Name"/>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,460,269" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="150" Height="25" Name="Tb_Surname"/>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,460,219" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="150" Height="25" Name="Tb_Patronymic"/>
+        <TextBox HorizontalAlignment="Right" Margin="0,0,460,169" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="150" Height="25" Name="Tb_Position"/>
+        <TextBox Margin="260,0,0,319" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="25" Name="Tb_Login" HorizontalAlignment="Left" Width="150"/>
+        <PasswordBox HorizontalAlignment="Left" Margin="260,0,0,269" VerticalAlignment="Bottom" Width="150" Height="25" Password="" Name="Tbs_password"/>
+        <Button Content="Создать" HorizontalAlignment="Left" Margin="40,290,0,0" VerticalAlignment="Top" Width="90" Click="Reg_Click" Height="30"/>
+        <TextBlock Margin="0,0,536,297" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Width="74" Height="17" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Фамилия"/></TextBlock>
+        <TextBlock Margin="0,0,535,244" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Отчество"/></TextBlock>
+        <TextBlock Margin="0,0,516,198" FontSize="13" FontWeight="Bold" HorizontalAlignment="Right" Width="94" Height="16" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Должность"/></TextBlock>
+        <TextBlock Margin="260,0,0,347" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Width="64" Height="17" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Логин"/></TextBlock>
+        <TextBlock Margin="260,0,0,295" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Width="64" Height="19" VerticalAlignment="Bottom" ><Run Language="ru-ru" Text="Пароль"/></TextBlock>
+    </Grid>
+</Window>
